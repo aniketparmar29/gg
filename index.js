@@ -17,28 +17,31 @@ const Append = (data)=>{
     let con = document.getElementById("procon");
     con.innerHTML="";
     data.map((el)=>{
-        if(el.category==="Bluetooth Headphone"){
-            let div = document.createElement("div");
-            div.className="d-flex gap-5" ;
-            div.style.color='black';
-            div.style.justifyContent='center';
-            div.addEventListener("click",function(){
-                let data=JSON.parse(localStorage.getItem("product"))||[]
-                data.push(el)
-                localStorage.setItem("product",JSON.stringify(data))
+        if(el.category==="Airpods"){
+            let divm = document.createElement("div");
+            divm.className="cover gap-4 d-flex" ;
+            let divs = document.createElement("div");
+            divs.className="box-container pb-4" ;
+            let divb = document.createElement("div");
+            divb.className="box w-100 shadow-sm " ;
+            divm.addEventListener("click",function(){
+                localStorage.setItem("product",JSON.stringify(el))
                 window.location.href="singleproduct.html"
             });
-            let title = document.createElement("h4");
+            let title = document.createElement("h3");
             title.innerText = el.title;
             let img = document.createElement("img");
-            img.style.tabSize='300px';
-            img.src=el.images[5];
+            img.style.width='200px';
+            img.src=el.images[4];
             let price = document.createElement("p");
             price.innerText=el.price;
             let buy = document.createElement("button");
             buy.innerText="Buy Now";
-            div.append(img,title,img,price,buy);
-            con.append(div)
+            buy.className="btn btn-warning";
+            divb.append(img,title,img,price,buy);
+            divs.append(divb);
+            divm.append(divs);
+            con.append(divm)
         }
     });
 }

@@ -36,4 +36,4 @@ return ` <nav class="navbar bg-white shadow-sm sticky-top  mx-auto   navbar-expa
 </nav>
 `;
 }
-export {Navbar};
+export  {Navbar};
