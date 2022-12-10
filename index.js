@@ -17,12 +17,22 @@ const Append = (data)=>{
     let con = document.getElementById("procon");
     con.innerHTML="";
     data.map((el)=>{
-        if(el.category==="Airpods"){
+        if(el.category==="Bluetooth Headphone"){
             let div = document.createElement("div");
+            div.className="d-flex gap-5" ;
+            div.style.color='black';
+            div.style.justifyContent='center';
+            div.addEventListener("click",function(){
+                let data=JSON.parse(localStorage.getItem("product"))||[]
+                data.push(el)
+                localStorage.setItem("product",JSON.stringify(data))
+                window.location.href="singleproduct.html"
+            });
             let title = document.createElement("h4");
             title.innerText = el.title;
             let img = document.createElement("img");
-            img.src=el.images[1];
+            img.style.tabSize='300px';
+            img.src=el.images[5];
             let price = document.createElement("p");
             price.innerText=el.price;
             let buy = document.createElement("button");
